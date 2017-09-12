@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-3">
+    </div>
+    <div class="col-xs-6">
+      <form #entryForm="ngForm">
+        <div class="form-group">
+          <label for="entryTitle">Title</label>
+          <input type="text" class="form-control" id="entryTitle" required [(ngModel)]="curEntry.title" name="title">
+        </div>
+        <div class="form-group">
+          <label for="entryBody">Body</label>
+          <textarea class="form-control" id="entryBody" rows="6" [(ngModel)]="curEntry.body" name="body"></textarea>
+        </div>
+        <button class="btn btn-primary">Submit</button>
+        <button class="btn btn-default">Delete</button>
+      </form>
+      <h2>Preview:</h2>
+      <entry-component [entry]="curEntry"></entry-component>
+      <h2>Current:</h2>
+      <label for="filterTextInput">Filter</label>
+      <input class="form-control" id="filterTextInput" [(ngModel)]="filterText">
+      <entry-component *ngFor="let entryItem of entries |filter:filterText" [entry]="entryItem" [editable]="true" (onEdited)="onEdited($event)"></entry-component>
+    </div>
+    <div class="col-xs-3">
+    </div>
+  </div>
+</div>

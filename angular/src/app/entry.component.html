@@ -1,0 +1,7 @@
+<div *ngIf="entry" class="blog-entry">
+	<h2 class="blog-entry-title">{{entry.title}}</h2>
+	<div class="blog-entry-body" [innerHTML]="entry.body"></div>
+	<div class="edit-options" *ngIf="editable || false ">
+		<button class="btn btn-default" (click)="onEditClick()">Edit</button>
+	</div>
+</div>
